@@ -46,6 +46,7 @@ graph TD
     
     A --> H[多源数据接入]
     H --> A
+
 sequenceDiagram
     participant 用户 as 用户
     participant 系统 as 系统
@@ -58,6 +59,7 @@ sequenceDiagram
     用户->>系统: 下发深度分析指令
     系统->>系统: 启动主题建模与对比分析
     系统->>用户: 返回结构化技术洞察
+
 def text_preprocess(text):
     # 去除HTML标签
     text = re.sub(r'<.*?>', '', text)
@@ -82,3 +84,27 @@ def plot_sentiment_distribution(data):
     sns.barplot(x=list(counts.keys()), y=list(counts.values()))
     plt.title('情感分布统计')
     plt.savefig('sentiment.png')
+class MultiSourceCrawler:
+    def __init__(self):
+        self.sources = {
+            'github': GitHubSpider(),
+            'zhihu': ZhihuSpider(),
+            'baidu': BaiduNewsSpider()
+        }
+        
+    def crawl(self, keyword):
+        results = []
+        for source in self.sources.values():
+            results.extend(source.search(keyword))
+        return results
+def hybrid_topic_modeling(texts):
+    # BERTopic进行向量化
+    model = BERTopic(language="chinese")
+    topics, probs = model.fit_transform(texts)
+    
+    # LDA补充细分
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(texts)
+    lda = LDA(n_components=5).fit(X)
+    
+    return model.get_topic_info(), lda.components_
