@@ -43,6 +43,7 @@ def chinese_tokenization(text):
 def remove_stopwords(words, stopwords):
     # 去除停用词
     return [word for word in words if word not in stopwords]
+```
 
 from some_sentiment_analysis_model import SentimentModel
 
