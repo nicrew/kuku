@@ -49,9 +49,10 @@ from some_sentiment_analysis_model import SentimentModel
 
 model = SentimentModel()
 sentiments = model.predict(text_data)
+
+
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-
 # 绘制词云图
 wordcloud = WordCloud(font_path='simhei.ttf').generate(' '.join(text_data))
 plt.imshow(wordcloud, interpolation='bilinear')
