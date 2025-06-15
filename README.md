@@ -136,3 +136,14 @@ def plot_wordcloud(text_data):
     plt.show()
 
     return kmeans.labels_
+```
+## 参考资料
+
+- [阿里通义千问 QWQ-32B 官方文档](https://xxxx.aliyun.com)
+- [LaTeX 入门文档](https://www.latex-project.org/help/)
+- [Python 爬虫与 NLP 教程](https://realpython.com/)
+
+---
+
+通过本项目，我们展示了如何利用阿里通义千问 QWQ-32B 实现从数据采集、情感分析到自动生成高质量舆情报告的整个流程，为国内舆情监控与大数据分析提供了有效实践参考。
+```
