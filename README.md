@@ -91,7 +91,7 @@ def extract_topics(text_data, n_clusters=5):
     kmeans.fit(X)
 ```
 ###可视化代码
-```python
+
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
